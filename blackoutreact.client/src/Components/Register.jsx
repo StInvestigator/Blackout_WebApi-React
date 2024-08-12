@@ -27,7 +27,7 @@ export default function Login() {
                 })
         }
         else {
-            setError("Паролі повинні бути однаковими");
+            setError("Passwords doesn`t match");
         }
     }
 
