@@ -1,0 +1,65 @@
+@WebAPI1_HostAddress = https://localhost:7238
+
+GET {{WebAPI1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+
+GET {{WebAPI1_HostAddress}}/api/v1/groups/list
+
+###
+
+PUT {{WebAPI1_HostAddress}}/api/v1/groups
+Content-Type: application/json
+
+{
+  "Name" : "3 Черга",
+  "Schedule" : [
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 0,
+      "State" : "Maybe"
+    },
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 1,
+      "State" : "Maybe"
+    },
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 2,
+      "State" : "Maybe"
+    }
+  ]
+}
+
+###
+
+POST {{WebAPI1_HostAddress}}/api/v1/groups/1
+Content-Type: application/json
+
+{
+  "Name" : "1 Черга",
+  "Schedule" : [
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 0,
+      "State" : "Off"
+    },
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 1,
+      "State" : "Off"
+    },
+    {
+      "Date" : "2024-07-28",
+      "Hour" : 2,
+      "State" : "Off"
+    }
+  ]
+}
+
+###
+
+DELETE {{WebAPI1_HostAddress}}/api/v1/groups/2
