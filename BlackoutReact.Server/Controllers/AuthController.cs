@@ -11,6 +11,7 @@ using BlackoutReact.Server.Models;
 using BlackoutReact.Server.Services;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using BlackoutReact.Server.Models.Responses;
+using System.Net.Mail;
 
 namespace WebAPI1.Controllers
 {
@@ -57,6 +58,16 @@ namespace WebAPI1.Controllers
                 {
                     Response.StatusCode = 400;
                     return ApiResponse<AuthResult>.ErrorResponse("Користувач з поштою " + request.Email + " вже істнує");
+                }
+
+                try
+                {
+                    MailAddress m = new MailAddress(request.Email);
+                }
+                catch (FormatException)
+                {
+                    Response.StatusCode = 400;
+                    return ApiResponse<AuthResult>.ErrorResponse("Неправильна електронна адреса");
                 }
 
                 var user = new User
